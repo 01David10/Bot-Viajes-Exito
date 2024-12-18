@@ -3,11 +3,8 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+#from selenium.webdriver.common.keys import Keys
 import time 
-
 
 service = Service("driver/chromedriver.exe")
 bot = webdriver.Chrome(service=service)
@@ -17,11 +14,25 @@ bot.maximize_window()
 bot.get("https://www.viajesexito.com") #ingresar al sitio donde se tenga que hacer la automatizacion
 time.sleep(1)
 
-
 fly = bot.find_element(By.XPATH, '//*[@id="header"]/div[2]/div/div/nav/div[1]/a')
 time.sleep(2)
 fly.click()
 time.sleep(2)
+
+
+origin = bot.find_element(By.XPATH, '//*[@id="CityPredictiveFrom_netactica_airhotel"]')
+time.sleep(3)
+origin.click()
+originwrite = bot.find_element(By.ID,'popUpCityPredictiveFrom_netactica_airhotel')
+originwrite.send_keys("Medellín")
+time.sleep(3)
+origin_airport = bot.find_element(By.XPATH, '//*[@id="ui-id-5"]/li/div/div[2]/p')
+time.sleep(1)
+origin_airport.click()
+time.sleep(1)
+
+
+
 
 
 
@@ -36,5 +47,18 @@ advertisement = bot.find_element(By.XPATH,'/html/body/div/div/div/div[1]/svg/pat
 time.sleep(2)
 advertisement.click()
 time.sleep(2)
+
+
+origin = bot.find_element(By.XPATH, '//*[@id="CityPredictiveFrom_netactica_airhotel"]')
+time.sleep(3)
+origin.click()
+
+inputorigin = "Medellin"
+origin = bot.find_element(By.XPATH, '//*[@id="CityPredictiveFrom_netactica_airhotel"]')
+time.sleep(3)
+origin.click()
+origin.send_keys(inputorigin)
+time.sleep(3)
+
 '''
 
