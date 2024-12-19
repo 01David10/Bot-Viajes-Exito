@@ -65,12 +65,34 @@ accept_date.click()
 time.sleep(2)
 
 #guests and rooms
-rooms = bot.find_element(By.XPATH, '/html/body/form/div[3]/div/div[2]/article/div/div[1]/div/div[1]/div/div/div[2]/div[2]/div[3]/div[2]/div[1]/div/div/div[3]/div/div/div/div/p')
+rooms = bot.find_element(By.XPATH, '//*[@id="txtNumPassengersPaquetesComplete"]')
 time.sleep(2)
 rooms.click()
 time.sleep(2)
 
+#Add room
+add_room = bot.find_element(By.XPATH, "//button[@id='btbAddRoomtwopaquetes']")
+time.sleep(2)
+add_room.click()
+time.sleep(2)
 
+add_adult = bot.find_element(By.XPATH, "//button[@class='btn btn-danger btn-number' and @data-type='plus' and @data-field='ddlAirHotelNumberAdultsDos']")
+time.sleep(0.5)
+add_adult.click()
+add_adult.click()
+time.sleep(2)
+
+#Accept rooms
+accept_room = bot.find_element(By.XPATH, '/html/body/form/div[3]/div[2]/article/div/div[1]/div/div[1]/div/div/div[2]/div[2]/div[3]/div[4]/div[2]/div[2]/button')
+time.sleep(1)
+accept_room.click()
+time.sleep(2)
+
+#search
+search = bot.find_element(By.XPATH, '//*[@id="sbm_netactica_airhotel"]')
+time.sleep(1)
+search.click()
+time.sleep(5)
 
 
 
