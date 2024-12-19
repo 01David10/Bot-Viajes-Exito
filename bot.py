@@ -3,6 +3,11 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as ec
+from selenium.webdriver.common.keys import Keys
+
+
 #from selenium.webdriver.common.keys import Keys
 import time 
 
@@ -94,35 +99,74 @@ time.sleep(1)
 search.click()
 time.sleep(5)
 
+# new window
+bot.switch_to.window(bot.window_handles[1])
 
+#view packages
+packages = WebDriverWait(bot, 10).until(
+    ec.presence_of_all_elements_located(
+        (By.XPATH, '//*[@id="divAirResults"]/div') 
+    )
+)
 
+print("Packages")
+print("")
 
+for idx, package in enumerate(packages):
+    
+    price = package.find_element(By.XPATH, ".//span[contains(@class, 'currencyText')]")
+    print(f"Package {idx + 1}: {price.text.strip()}")
 
+print("")
 
+time.sleep(30)
 
+#Advance Options
 
-'''
-origin = bot.find_element(By.XPATH, '//*[@id="CityPredictiveFrom_netactica_airhotel"]')
+advance_option = bot.find_element(By.XPATH, '/html/body/div[3]/div[1]/div[2]/div[4]/div/div/div/div[1]/div[1]/div/div[6]/a')
 time.sleep(2)
-origin.click()
-/html/body/form/div[3]/div/div[2]/article/div/div[1]/div/div[1]/div/div/div[2]/div[1]/ul/li[3]
+advance_option.click()
+time.sleep(5)
 
-advertisement = bot.find_element(By.XPATH,'/html/body/div/div/div/div[1]/svg/path')
+airline = WebDriverWait(bot, 10).until(
+    ec.element_to_be_clickable((By.ID, 'txtAirlineCode'))
+)
+
+airline.click() 
+time.sleep(1) 
+airline.send_keys('Avianca')
+time.sleep(1)
+airline.send_keys(Keys.ENTER)
+time.sleep(1)
+
+#accept advance options
+accept_advance_options = bot.find_element(By.XPATH, '/html/body/div[3]/div[1]/div[2]/div[4]/div/div/div/div[1]/div[1]/div/div[8]/input')
+time.sleep(1)
+accept_advance_options.click()
+time.sleep(15)
+
+#footer
+footer = WebDriverWait(bot, 10).until(
+    ec.presence_of_element_located((By.XPATH, '/html/body/div[3]/div[1]/div[2]/div[5]/footer')))
+
+actions = ActionChains(bot)
+actions.move_to_element(footer).perform()  
+time.sleep(5)
+
+#whatsapp
+whatsapp = bot.find_element(By.XPATH, '/html/body/div[3]/div[1]/div[2]/div[5]/footer/div[2]/div/div/div[1]/div/p[1]/a')
+time.sleep(1)
+whatsapp.click()
 time.sleep(2)
-advertisement.click()
-time.sleep(2)
+
+bot.switch_to.window(bot.window_handles[2])
+
+bot.close()  
+bot.quit() 
 
 
-origin = bot.find_element(By.XPATH, '//*[@id="CityPredictiveFrom_netactica_airhotel"]')
-time.sleep(3)
-origin.click()
 
-inputorigin = "Medellin"
-origin = bot.find_element(By.XPATH, '//*[@id="CityPredictiveFrom_netactica_airhotel"]')
-time.sleep(3)
-origin.click()
-origin.send_keys(inputorigin)
-time.sleep(3)
 
-'''
+
+
 
