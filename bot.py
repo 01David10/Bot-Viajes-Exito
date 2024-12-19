@@ -49,13 +49,26 @@ time.sleep(2)
 select_departure_date.click()
 time.sleep(2)
 departure_date = bot.find_element(By.XPATH, '//div[@aria-label="Sábado, Diciembre 21, 2024"]')
-time.sleep(3)
+time.sleep(1)
 departure_date.click()
+time.sleep(4)
+
+#Arrive date
+arrive_date = bot.find_element(By.XPATH, '/html/body/div[9]/div[2]/div[2]/div[1]/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[1]/div/div[3]/div/div[2]/div[6]/div[2]/div[1]')
 time.sleep(3)
+arrive_date.click()  
 
+#Accept date
+accept_date = bot.find_element(By.XPATH, '/html/body/div[9]/div[2]/div[2]/div[2]/button[2]')
+time.sleep(3)
+accept_date.click()
+time.sleep(2)
 
-
-
+#guests and rooms
+rooms = bot.find_element(By.XPATH, '/html/body/form/div[3]/div/div[2]/article/div/div[1]/div/div[1]/div/div/div[2]/div[2]/div[3]/div[2]/div[1]/div/div/div[3]/div/div/div/div/p')
+time.sleep(2)
+rooms.click()
+time.sleep(2)
 
 
 
