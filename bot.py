@@ -19,7 +19,7 @@ time.sleep(2)
 fly.click()
 time.sleep(2)
 
-
+#origin
 origin = bot.find_element(By.XPATH, '//*[@id="CityPredictiveFrom_netactica_airhotel"]')
 time.sleep(3)
 origin.click()
@@ -30,6 +30,23 @@ origin_airport = bot.find_element(By.XPATH, '//*[@id="ui-id-5"]/li/div/div[2]/p'
 time.sleep(1)
 origin_airport.click()
 time.sleep(1)
+
+#destination
+destination = bot.find_element(By.XPATH, '//*[@id="CityPredictiveTo_netactica_airhotel"]')
+time.sleep(3)
+destination.click()
+destinationwrite = bot.find_element(By.XPATH, '//*[@id="popUpCityPredictiveTo_netactica_airhotel"]')
+destinationwrite.send_keys("Cancún")
+time.sleep(3)
+destination_airport = bot.find_element(By.XPATH, '//*[@id="ui-id-6"]/li/div/div[2]')
+time.sleep(1)
+destination_airport.click()
+time.sleep(1)
+
+
+
+
+
 
 
 
