@@ -63,7 +63,7 @@ departure_date.click()
 time.sleep(4)
 
 #Arrive date
-arrive_date = bot.find_element(By.XPATH, '//div[@aria-label="Miércoles, Enero 1, 2025"]')
+arrive_date = bot.find_element(By.XPATH, '/html/body/div[9]/div[2]/div[2]/div[1]/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[1]/div/div[3]/div/div[2]/div[6]/div[2]/div[1]')
 time.sleep(3)
 arrive_date.click()  
 
