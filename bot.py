@@ -11,11 +11,13 @@ from selenium.webdriver.common.keys import Keys
 #from selenium.webdriver.common.keys import Keys
 import time 
 
+print("Starting automation")
 service = Service("driver/chromedriver.exe")
 bot = webdriver.Chrome(service=service)
 #time.sleep(3)
 bot.maximize_window()
 
+print("Entering viajesexito")
 bot.get("https://www.viajesexito.com") #ingresar al sitio donde se tenga que hacer la automatizacion
 time.sleep(1)
 
@@ -25,6 +27,7 @@ fly.click()
 time.sleep(1)
 
 #origin
+print("trip from medellin to cancun")
 origin = bot.find_element(By.XPATH, '//*[@id="CityPredictiveFrom_netactica_airhotel"]')
 time.sleep(2)
 origin.click()
@@ -49,6 +52,7 @@ destination_airport.click()
 time.sleep(1)
 
 #departure date
+print("The ID of both members ends in 0, so the number 1 is used for both the departure date and the arrival date.")
 select_departure_date = bot.find_element(By.XPATH, '//*[@id="Date_netactica_air_hotel"]')
 time.sleep(2)
 select_departure_date.click()
@@ -59,7 +63,7 @@ departure_date.click()
 time.sleep(4)
 
 #Arrive date
-arrive_date = bot.find_element(By.XPATH, '/html/body/div[9]/div[2]/div[2]/div[1]/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[1]/div/div[3]/div/div[2]/div[6]/div[2]/div[1]')
+arrive_date = bot.find_element(By.XPATH, '//div[@aria-label="Miércoles, Enero 1, 2025"]')
 time.sleep(3)
 arrive_date.click()  
 
@@ -70,6 +74,7 @@ accept_date.click()
 time.sleep(2)
 
 #guests and rooms
+print("Select rooms")
 rooms = bot.find_element(By.XPATH, '//*[@id="txtNumPassengersPaquetesComplete"]')
 time.sleep(2)
 rooms.click()
@@ -103,6 +108,7 @@ time.sleep(5)
 bot.switch_to.window(bot.window_handles[1])
 
 #view packages
+print("View packages")
 packages = WebDriverWait(bot, 10).until(
     ec.presence_of_all_elements_located(
         (By.XPATH, '//*[@id="divAirResults"]/div') 
@@ -122,7 +128,7 @@ print("")
 time.sleep(30)
 
 #Advance Options
-
+print("Enter a advance options")
 advance_option = bot.find_element(By.XPATH, '/html/body/div[3]/div[1]/div[2]/div[4]/div/div/div/div[1]/div[1]/div/div[6]/a')
 time.sleep(2)
 advance_option.click()
@@ -146,6 +152,7 @@ accept_advance_options.click()
 time.sleep(15)
 
 #footer
+print("go to the footer")
 footer = WebDriverWait(bot, 10).until(
     ec.presence_of_element_located((By.XPATH, '/html/body/div[3]/div[1]/div[2]/div[5]/footer')))
 
@@ -161,6 +168,8 @@ time.sleep(2)
 
 bot.switch_to.window(bot.window_handles[2])
 
+#close
+print("Close automation")
 bot.close()  
 bot.quit() 
 
